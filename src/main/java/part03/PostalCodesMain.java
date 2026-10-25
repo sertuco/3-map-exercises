@@ -1,7 +1,9 @@
 package part03;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * This part of the exercise is tested manually through the user interface, not
@@ -41,9 +43,20 @@ public class PostalCodesMain {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input postal code or district (e.g., 00100 or Helsinki): ");
         String answer = scanner.nextLine(); // answer may be a postal code or a postal district name
-
-        // TODO: Implement your logic here
-
         scanner.close();
+        // TODO: Implement your logic here
+        Set<String> keys = postalCodes.keySet();
+        ArrayList<String> list = new ArrayList<String>();
+        for (String key : keys) {
+            if (answer.equals(key)) {
+                System.out.println("Post office: " + postalCodes.get(key));
+            } else if (answer.equalsIgnoreCase(postalCodes.get(key))) {
+                list.add(key);
+            }
+        }
+        if (list.size() > 0) {
+            list.sort(null);
+            System.out.println("Postal codes: " + list);
+        }
     }
 }
