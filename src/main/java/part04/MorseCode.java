@@ -97,7 +97,9 @@ public class MorseCode {
                 answer += " ";
             }
             for (String code : codes) {
-                answer += map2.get(code);
+                if (map2.get(code) != null) {
+                    answer += map2.get(code);
+                }
             }
         }
         return answer.toLowerCase();
